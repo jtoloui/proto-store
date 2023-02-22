@@ -1,0 +1,20 @@
+version: v1
+managed:
+  enabled: true
+  optimize_for: CODE_SIZE
+
+
+plugins:
+  - plugin: buf.build/bufbuild/connect-web:v0.7.0
+    out: target=js+dts
+  - plugin: buf.build/bufbuild/es
+    opt: target=js+dts
+    out: js
+  - plugin: buf.build/community/pseudomuto-doc
+    out: docs
+    opt:
+      - markdown,README.md
+  - plugin: buf.build/community/pseudomuto-doc
+    out: docs
+    opt:
+      - html,index.html

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package movies.v1;
+
+// The movie message containing the title, director, and year.
+message Movie {
+  // The title of the movie.
+  string title = 1;
+  // The director of the movie.
+  string director = 2;
+  // The year the movie was released.
+  int32 year = 3;
+}
+
+// The request message containing the movie title.
+message GetMovieByTitleRequest {
+	// The title of the movie to retrieve.
+  string title = 1;
+}
+
+// The response message containing the movie.
+message GetMovieByTitleResponse {
+  // The movie with the given title.
+  Movie movie = 1;
+}
+// The movies service definition.
+service MoviesService {
+  // Retrieves the movie with the given title.
+  rpc GetMovieByTitle(GetMovieByTitleRequest) returns (GetMovieByTitleResponse) {}
+}
