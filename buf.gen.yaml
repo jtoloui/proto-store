@@ -20,7 +20,7 @@ plugins:
 
   - plugin: buf.build/community/timostamm-protobuf-ts
     out: javascript
-    opt: optimize_code_size,long_type_string,add_pb_suffix,ts_nocheck,eslint_disable,server_grpc1
+    opt: long_type_string,add_pb_suffix,ts_nocheck,eslint_disable,server_grpc1,client_grpc1
   # - plugin: buf.build/community/timostamm-protobuf-ts
   #   out: javascript
 
