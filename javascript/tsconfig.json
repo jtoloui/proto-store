@@ -9,10 +9,6 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "include": [
-    "index.ts",
-    "movies/**/*.ts"
-  ],
   "exclude": [
     "node_modules",
     "dist"
