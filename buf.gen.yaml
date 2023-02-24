@@ -6,23 +6,21 @@ managed:
 plugins:
   # - plugin: buf.build/bufbuild/connect-web:v0.7.0
   #   out: target=js+dts
-  - plugin: buf.build/bufbuild/es
-    opt: target=js
-    out: javascript
+  # - plugin: buf.build/bufbuild/es
+  #   opt: target=js
+  #   out: javascript
 
   # - plugin: buf.build/bufbuild/connect-es
   #   out: js
   #   opt:
   #     - target=js+dts
-  - plugin: buf.build/grpc/node
-    out: javascript
-    opt: grpc_js,binary,import_style=commonjs
+  # - plugin: buf.build/grpc/node
+  #   out: javascript
+  #   opt: grpc_js,binary,import_style=commonjs
 
   - plugin: buf.build/community/timostamm-protobuf-ts
     out: javascript
-    opt: 
-      - generate_dependencies
-      - use_proto_field_name
+    opt: optimize_code_size,long_type_string,add_pb_suffix,ts_nocheck,eslint_disable,server_grpc1
   # - plugin: buf.build/community/timostamm-protobuf-ts
   #   out: javascript
 
