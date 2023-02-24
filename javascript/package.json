@@ -1,0 +1,27 @@
+{
+  "name": "@jtoloui/proto-store",
+  "version": "1.0.0",
+  "description": "ProtoStore is proto buff store for nodejs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jtoloui/proto-store.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "author": "",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "devDependencies": {
+    "@types/google-protobuf": "^3.15.6",
+    "grpc-tools": "^1.11.3"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.7.3",
+    "@protobuf-ts/runtime-rpc": "^2.8.2"
+  }
+}

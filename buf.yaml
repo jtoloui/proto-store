@@ -10,3 +10,5 @@ lint:
 breaking:
   use:
     - FILE
+build:
+  excludes: [javascript/node_modules, example/node_modules]
