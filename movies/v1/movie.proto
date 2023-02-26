@@ -14,7 +14,7 @@ message Movie {
 
 // The request message containing the movie title.
 message GetMovieByIdRequest {
-	// The title of the movie to retrieve.
+  // The title of the movie to retrieve.
   string id = 1;
 }
 
@@ -34,6 +34,7 @@ message CreateMovieRequest {
 message CreateMovieResponse {
   // The created movie.
   Movie movie = 1;
+  // The id of the created movie.
   string id = 2;
 }
 
