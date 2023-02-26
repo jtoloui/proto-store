@@ -34,7 +34,9 @@ message CreateMovieRequest {
 message CreateMovieResponse {
   // The created movie.
   Movie movie = 1;
-  string id = 2;
+  // id of the created movie.
+  int32 id = 2;
+
 }
 
 // The movies service definition.
