@@ -1,0 +1,34 @@
+name: Buf Generate
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.proto'
+jobs:
+  buf-generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+      - uses: bufbuild/buf-setup-action@v1
+        with:
+          github_token: ${{ secrets.NPM_TOKEN }}
+
+      - name: Buf Generate
+        run: buf generate
+
+      - name: Check for changes & Commit
+        if: (github.event_name == 'push')
+        run: |
+          if ! git diff --quiet; then
+            echo "Changes detected, committing and pushing"
+            git config --global user.name "B2B-CI"
+            git config --global user.email "b2b-ci@users.noreply.github.com"
+            git add .
+            git commit -m "CI: Pushing generated proto buf"
+            git push
+          else
+            echo "No changes detected, skipping commit and push"
+          fi

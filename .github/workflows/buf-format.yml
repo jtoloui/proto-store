@@ -1,0 +1,31 @@
+name: Buf Format check
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '**/*.proto'
+
+jobs:
+  buf-format:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
+    - uses: bufbuild/buf-setup-action@v1
+
+    - name: buf format
+      run: buf format -w
+
+    - name: Check for changes
+      run: |
+        git diff --quiet || (echo "Changes detected, please run buf format -w" && exit 1)
+
+    - name: Raise comment
+      if: failure()
+      uses: peter-evans/create-or-update-comment@v2
+      with:
+        issue-number: ${{ github.event.pull_request.number }}
+        body: "buf has generated changes, please run `buf format -w` before pushing again"
