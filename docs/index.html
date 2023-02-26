@@ -179,11 +179,19 @@
             <ul>
               
                 <li>
-                  <a href="#movies.v1.GetMovieByTitleRequest"><span class="badge">M</span>GetMovieByTitleRequest</a>
+                  <a href="#movies.v1.CreateMovieRequest"><span class="badge">M</span>CreateMovieRequest</a>
                 </li>
               
                 <li>
-                  <a href="#movies.v1.GetMovieByTitleResponse"><span class="badge">M</span>GetMovieByTitleResponse</a>
+                  <a href="#movies.v1.CreateMovieResponse"><span class="badge">M</span>CreateMovieResponse</a>
+                </li>
+              
+                <li>
+                  <a href="#movies.v1.GetMovieByIdRequest"><span class="badge">M</span>GetMovieByIdRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#movies.v1.GetMovieByIdResponse"><span class="badge">M</span>GetMovieByIdResponse</a>
                 </li>
               
                 <li>
@@ -212,7 +220,55 @@
       <p></p>
 
       
-        <h3 id="movies.v1.GetMovieByTitleRequest">GetMovieByTitleRequest</h3>
+        <h3 id="movies.v1.CreateMovieRequest">CreateMovieRequest</h3>
+        <p>The request message containing the movie.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>movie</td>
+                  <td><a href="#movies.v1.Movie">Movie</a></td>
+                  <td></td>
+                  <td><p>The movie to create. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="movies.v1.CreateMovieResponse">CreateMovieResponse</h3>
+        <p>The response message containing the movie.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>movie</td>
+                  <td><a href="#movies.v1.Movie">Movie</a></td>
+                  <td></td>
+                  <td><p>The created movie. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="movies.v1.GetMovieByIdRequest">GetMovieByIdRequest</h3>
         <p>The request message containing the movie title.</p>
 
         
@@ -223,7 +279,7 @@
             <tbody>
               
                 <tr>
-                  <td>title</td>
+                  <td>id</td>
                   <td><a href="#string">string</a></td>
                   <td></td>
                   <td><p>The title of the movie to retrieve. </p></td>
@@ -236,7 +292,7 @@
 
         
       
-        <h3 id="movies.v1.GetMovieByTitleResponse">GetMovieByTitleResponse</h3>
+        <h3 id="movies.v1.GetMovieByIdResponse">GetMovieByIdResponse</h3>
         <p>The response message containing the movie.</p>
 
         
@@ -313,10 +369,17 @@
           <tbody>
             
               <tr>
-                <td>GetMovieByTitle</td>
-                <td><a href="#movies.v1.GetMovieByTitleRequest">GetMovieByTitleRequest</a></td>
-                <td><a href="#movies.v1.GetMovieByTitleResponse">GetMovieByTitleResponse</a></td>
+                <td>GetMovieById</td>
+                <td><a href="#movies.v1.GetMovieByIdRequest">GetMovieByIdRequest</a></td>
+                <td><a href="#movies.v1.GetMovieByIdResponse">GetMovieByIdResponse</a></td>
                 <td><p>Retrieves the movie with the given title.</p></td>
+              </tr>
+            
+              <tr>
+                <td>CreateMovie</td>
+                <td><a href="#movies.v1.CreateMovieRequest">CreateMovieRequest</a></td>
+                <td><a href="#movies.v1.CreateMovieResponse">CreateMovieResponse</a></td>
+                <td><p>Creates a movie.</p></td>
               </tr>
             
           </tbody>

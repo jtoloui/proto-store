@@ -3,8 +3,10 @@
 // @generated from protobuf file "movies/v1/movie.proto" (package "movies.v1", syntax proto3)
 // tslint:disable
 // @ts-nocheck
-import { GetMovieByTitleResponse } from "./movie_pb";
-import { GetMovieByTitleRequest } from "./movie_pb";
+import { CreateMovieResponse } from "./movie_pb";
+import { CreateMovieRequest } from "./movie_pb";
+import { GetMovieByIdResponse } from "./movie_pb";
+import { GetMovieByIdRequest } from "./movie_pb";
 import type * as grpc from "@grpc/grpc-js";
 /**
  * The movies service definition.
@@ -15,9 +17,15 @@ export interface IMoviesService extends grpc.UntypedServiceImplementation {
     /**
      * Retrieves the movie with the given title.
      *
-     * @generated from protobuf rpc: GetMovieByTitle(movies.v1.GetMovieByTitleRequest) returns (movies.v1.GetMovieByTitleResponse);
+     * @generated from protobuf rpc: GetMovieById(movies.v1.GetMovieByIdRequest) returns (movies.v1.GetMovieByIdResponse);
      */
-    getMovieByTitle: grpc.handleUnaryCall<GetMovieByTitleRequest, GetMovieByTitleResponse>;
+    getMovieById: grpc.handleUnaryCall<GetMovieByIdRequest, GetMovieByIdResponse>;
+    /**
+     * Creates a movie.
+     *
+     * @generated from protobuf rpc: CreateMovie(movies.v1.CreateMovieRequest) returns (movies.v1.CreateMovieResponse);
+     */
+    createMovie: grpc.handleUnaryCall<CreateMovieRequest, CreateMovieResponse>;
 }
 /**
  * @grpc/grpc-js definition for the protobuf service movies.v1.MoviesService.
@@ -31,14 +39,24 @@ export interface IMoviesService extends grpc.UntypedServiceImplementation {
  * ```
  */
 export const moviesServiceDefinition: grpc.ServiceDefinition<IMoviesService> = {
-    getMovieByTitle: {
-        path: "/movies.v1.MoviesService/GetMovieByTitle",
-        originalName: "GetMovieByTitle",
+    getMovieById: {
+        path: "/movies.v1.MoviesService/GetMovieById",
+        originalName: "GetMovieById",
         requestStream: false,
         responseStream: false,
-        responseDeserialize: bytes => GetMovieByTitleResponse.fromBinary(bytes),
-        requestDeserialize: bytes => GetMovieByTitleRequest.fromBinary(bytes),
-        responseSerialize: value => Buffer.from(GetMovieByTitleResponse.toBinary(value)),
-        requestSerialize: value => Buffer.from(GetMovieByTitleRequest.toBinary(value))
+        responseDeserialize: bytes => GetMovieByIdResponse.fromBinary(bytes),
+        requestDeserialize: bytes => GetMovieByIdRequest.fromBinary(bytes),
+        responseSerialize: value => Buffer.from(GetMovieByIdResponse.toBinary(value)),
+        requestSerialize: value => Buffer.from(GetMovieByIdRequest.toBinary(value))
+    },
+    createMovie: {
+        path: "/movies.v1.MoviesService/CreateMovie",
+        originalName: "CreateMovie",
+        requestStream: false,
+        responseStream: false,
+        responseDeserialize: bytes => CreateMovieResponse.fromBinary(bytes),
+        requestDeserialize: bytes => CreateMovieRequest.fromBinary(bytes),
+        responseSerialize: value => Buffer.from(CreateMovieResponse.toBinary(value)),
+        requestSerialize: value => Buffer.from(CreateMovieRequest.toBinary(value))
     }
 };

@@ -33,24 +33,50 @@ export interface Movie {
 /**
  * The request message containing the movie title.
  *
- * @generated from protobuf message movies.v1.GetMovieByTitleRequest
+ * @generated from protobuf message movies.v1.GetMovieByIdRequest
  */
-export interface GetMovieByTitleRequest {
+export interface GetMovieByIdRequest {
     /**
      * The title of the movie to retrieve.
      *
-     * @generated from protobuf field: string title = 1;
+     * @generated from protobuf field: string id = 1;
      */
-    title: string;
+    id: string;
 }
 /**
  * The response message containing the movie.
  *
- * @generated from protobuf message movies.v1.GetMovieByTitleResponse
+ * @generated from protobuf message movies.v1.GetMovieByIdResponse
  */
-export interface GetMovieByTitleResponse {
+export interface GetMovieByIdResponse {
     /**
      * The movie with the given title.
+     *
+     * @generated from protobuf field: movies.v1.Movie movie = 1;
+     */
+    movie?: Movie;
+}
+/**
+ * The request message containing the movie.
+ *
+ * @generated from protobuf message movies.v1.CreateMovieRequest
+ */
+export interface CreateMovieRequest {
+    /**
+     * The movie to create.
+     *
+     * @generated from protobuf field: movies.v1.Movie movie = 1;
+     */
+    movie?: Movie;
+}
+/**
+ * The response message containing the movie.
+ *
+ * @generated from protobuf message movies.v1.CreateMovieResponse
+ */
+export interface CreateMovieResponse {
+    /**
+     * The created movie.
      *
      * @generated from protobuf field: movies.v1.Movie movie = 1;
      */
@@ -71,32 +97,57 @@ class Movie$Type extends MessageType<Movie> {
  */
 export const Movie = new Movie$Type();
 // @generated message type with reflection information, may provide speed optimized methods
-class GetMovieByTitleRequest$Type extends MessageType<GetMovieByTitleRequest> {
+class GetMovieByIdRequest$Type extends MessageType<GetMovieByIdRequest> {
     constructor() {
-        super("movies.v1.GetMovieByTitleRequest", [
-            { no: 1, name: "title", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+        super("movies.v1.GetMovieByIdRequest", [
+            { no: 1, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
 }
 /**
- * @generated MessageType for protobuf message movies.v1.GetMovieByTitleRequest
+ * @generated MessageType for protobuf message movies.v1.GetMovieByIdRequest
  */
-export const GetMovieByTitleRequest = new GetMovieByTitleRequest$Type();
+export const GetMovieByIdRequest = new GetMovieByIdRequest$Type();
 // @generated message type with reflection information, may provide speed optimized methods
-class GetMovieByTitleResponse$Type extends MessageType<GetMovieByTitleResponse> {
+class GetMovieByIdResponse$Type extends MessageType<GetMovieByIdResponse> {
     constructor() {
-        super("movies.v1.GetMovieByTitleResponse", [
+        super("movies.v1.GetMovieByIdResponse", [
             { no: 1, name: "movie", kind: "message", T: () => Movie }
         ]);
     }
 }
 /**
- * @generated MessageType for protobuf message movies.v1.GetMovieByTitleResponse
+ * @generated MessageType for protobuf message movies.v1.GetMovieByIdResponse
  */
-export const GetMovieByTitleResponse = new GetMovieByTitleResponse$Type();
+export const GetMovieByIdResponse = new GetMovieByIdResponse$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class CreateMovieRequest$Type extends MessageType<CreateMovieRequest> {
+    constructor() {
+        super("movies.v1.CreateMovieRequest", [
+            { no: 1, name: "movie", kind: "message", T: () => Movie }
+        ]);
+    }
+}
+/**
+ * @generated MessageType for protobuf message movies.v1.CreateMovieRequest
+ */
+export const CreateMovieRequest = new CreateMovieRequest$Type();
+// @generated message type with reflection information, may provide speed optimized methods
+class CreateMovieResponse$Type extends MessageType<CreateMovieResponse> {
+    constructor() {
+        super("movies.v1.CreateMovieResponse", [
+            { no: 1, name: "movie", kind: "message", T: () => Movie }
+        ]);
+    }
+}
+/**
+ * @generated MessageType for protobuf message movies.v1.CreateMovieResponse
+ */
+export const CreateMovieResponse = new CreateMovieResponse$Type();
 /**
  * @generated ServiceType for protobuf service movies.v1.MoviesService
  */
 export const MoviesService = new ServiceType("movies.v1.MoviesService", [
-    { name: "GetMovieByTitle", options: {}, I: GetMovieByTitleRequest, O: GetMovieByTitleResponse }
+    { name: "GetMovieById", options: {}, I: GetMovieByIdRequest, O: GetMovieByIdResponse },
+    { name: "CreateMovie", options: {}, I: CreateMovieRequest, O: CreateMovieResponse }
 ]);

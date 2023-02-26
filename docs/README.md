@@ -4,8 +4,10 @@
 ## Table of Contents
 
 - [movies/v1/movie.proto](#movies_v1_movie-proto)
-    - [GetMovieByTitleRequest](#movies-v1-GetMovieByTitleRequest)
-    - [GetMovieByTitleResponse](#movies-v1-GetMovieByTitleResponse)
+    - [CreateMovieRequest](#movies-v1-CreateMovieRequest)
+    - [CreateMovieResponse](#movies-v1-CreateMovieResponse)
+    - [GetMovieByIdRequest](#movies-v1-GetMovieByIdRequest)
+    - [GetMovieByIdResponse](#movies-v1-GetMovieByIdResponse)
     - [Movie](#movies-v1-Movie)
   
     - [MoviesService](#movies-v1-MoviesService)
@@ -21,24 +23,54 @@
 
 
 
-<a name="movies-v1-GetMovieByTitleRequest"></a>
+<a name="movies-v1-CreateMovieRequest"></a>
 
-### GetMovieByTitleRequest
+### CreateMovieRequest
+The request message containing the movie.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| movie | [Movie](#movies-v1-Movie) |  | The movie to create. |
+
+
+
+
+
+
+<a name="movies-v1-CreateMovieResponse"></a>
+
+### CreateMovieResponse
+The response message containing the movie.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| movie | [Movie](#movies-v1-Movie) |  | The created movie. |
+
+
+
+
+
+
+<a name="movies-v1-GetMovieByIdRequest"></a>
+
+### GetMovieByIdRequest
 The request message containing the movie title.
 
 
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
-| title | [string](#string) |  | The title of the movie to retrieve. |
+| id | [string](#string) |  | The title of the movie to retrieve. |
 
 
 
 
 
 
-<a name="movies-v1-GetMovieByTitleResponse"></a>
+<a name="movies-v1-GetMovieByIdResponse"></a>
 
-### GetMovieByTitleResponse
+### GetMovieByIdResponse
 The response message containing the movie.
 
 
@@ -81,7 +113,8 @@ The movies service definition.
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
-| GetMovieByTitle | [GetMovieByTitleRequest](#movies-v1-GetMovieByTitleRequest) | [GetMovieByTitleResponse](#movies-v1-GetMovieByTitleResponse) | Retrieves the movie with the given title. |
+| GetMovieById | [GetMovieByIdRequest](#movies-v1-GetMovieByIdRequest) | [GetMovieByIdResponse](#movies-v1-GetMovieByIdResponse) | Retrieves the movie with the given title. |
+| CreateMovie | [CreateMovieRequest](#movies-v1-CreateMovieRequest) | [CreateMovieResponse](#movies-v1-CreateMovieResponse) | Creates a movie. |
 
  
 

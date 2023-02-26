@@ -6,8 +6,10 @@
 import { MoviesService } from "./movie_pb";
 import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
 import type { BinaryReadOptions } from "@protobuf-ts/runtime";
-import type { GetMovieByTitleResponse } from "./movie_pb";
-import type { GetMovieByTitleRequest } from "./movie_pb";
+import type { CreateMovieResponse } from "./movie_pb";
+import type { CreateMovieRequest } from "./movie_pb";
+import type { GetMovieByIdResponse } from "./movie_pb";
+import type { GetMovieByIdRequest } from "./movie_pb";
 import * as grpc from "@grpc/grpc-js";
 /**
  * The movies service definition.
@@ -18,12 +20,21 @@ export interface IMoviesServiceClient {
     /**
      * Retrieves the movie with the given title.
      *
-     * @generated from protobuf rpc: GetMovieByTitle(movies.v1.GetMovieByTitleRequest) returns (movies.v1.GetMovieByTitleResponse);
+     * @generated from protobuf rpc: GetMovieById(movies.v1.GetMovieByIdRequest) returns (movies.v1.GetMovieByIdResponse);
      */
-    getMovieByTitle(input: GetMovieByTitleRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: (err: grpc.ServiceError | null, value?: GetMovieByTitleResponse) => void): grpc.ClientUnaryCall;
-    getMovieByTitle(input: GetMovieByTitleRequest, metadata: grpc.Metadata, callback: (err: grpc.ServiceError | null, value?: GetMovieByTitleResponse) => void): grpc.ClientUnaryCall;
-    getMovieByTitle(input: GetMovieByTitleRequest, options: grpc.CallOptions, callback: (err: grpc.ServiceError | null, value?: GetMovieByTitleResponse) => void): grpc.ClientUnaryCall;
-    getMovieByTitle(input: GetMovieByTitleRequest, callback: (err: grpc.ServiceError | null, value?: GetMovieByTitleResponse) => void): grpc.ClientUnaryCall;
+    getMovieById(input: GetMovieByIdRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: (err: grpc.ServiceError | null, value?: GetMovieByIdResponse) => void): grpc.ClientUnaryCall;
+    getMovieById(input: GetMovieByIdRequest, metadata: grpc.Metadata, callback: (err: grpc.ServiceError | null, value?: GetMovieByIdResponse) => void): grpc.ClientUnaryCall;
+    getMovieById(input: GetMovieByIdRequest, options: grpc.CallOptions, callback: (err: grpc.ServiceError | null, value?: GetMovieByIdResponse) => void): grpc.ClientUnaryCall;
+    getMovieById(input: GetMovieByIdRequest, callback: (err: grpc.ServiceError | null, value?: GetMovieByIdResponse) => void): grpc.ClientUnaryCall;
+    /**
+     * Creates a movie.
+     *
+     * @generated from protobuf rpc: CreateMovie(movies.v1.CreateMovieRequest) returns (movies.v1.CreateMovieResponse);
+     */
+    createMovie(input: CreateMovieRequest, metadata: grpc.Metadata, options: grpc.CallOptions, callback: (err: grpc.ServiceError | null, value?: CreateMovieResponse) => void): grpc.ClientUnaryCall;
+    createMovie(input: CreateMovieRequest, metadata: grpc.Metadata, callback: (err: grpc.ServiceError | null, value?: CreateMovieResponse) => void): grpc.ClientUnaryCall;
+    createMovie(input: CreateMovieRequest, options: grpc.CallOptions, callback: (err: grpc.ServiceError | null, value?: CreateMovieResponse) => void): grpc.ClientUnaryCall;
+    createMovie(input: CreateMovieRequest, callback: (err: grpc.ServiceError | null, value?: CreateMovieResponse) => void): grpc.ClientUnaryCall;
 }
 /**
  * The movies service definition.
@@ -39,10 +50,19 @@ export class MoviesServiceClient extends grpc.Client implements IMoviesServiceCl
     /**
      * Retrieves the movie with the given title.
      *
-     * @generated from protobuf rpc: GetMovieByTitle(movies.v1.GetMovieByTitleRequest) returns (movies.v1.GetMovieByTitleResponse);
+     * @generated from protobuf rpc: GetMovieById(movies.v1.GetMovieByIdRequest) returns (movies.v1.GetMovieByIdResponse);
      */
-    getMovieByTitle(input: GetMovieByTitleRequest, metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: GetMovieByTitleResponse) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: GetMovieByTitleResponse) => void), callback?: ((err: grpc.ServiceError | null, value?: GetMovieByTitleResponse) => void)): grpc.ClientUnaryCall {
+    getMovieById(input: GetMovieByIdRequest, metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: GetMovieByIdResponse) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: GetMovieByIdResponse) => void), callback?: ((err: grpc.ServiceError | null, value?: GetMovieByIdResponse) => void)): grpc.ClientUnaryCall {
         const method = MoviesService.methods[0];
-        return this.makeUnaryRequest<GetMovieByTitleRequest, GetMovieByTitleResponse>(`/${MoviesService.typeName}/${method.name}`, (value: GetMovieByTitleRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): GetMovieByTitleResponse => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), (options as any), (callback as any));
+        return this.makeUnaryRequest<GetMovieByIdRequest, GetMovieByIdResponse>(`/${MoviesService.typeName}/${method.name}`, (value: GetMovieByIdRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): GetMovieByIdResponse => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), (options as any), (callback as any));
+    }
+    /**
+     * Creates a movie.
+     *
+     * @generated from protobuf rpc: CreateMovie(movies.v1.CreateMovieRequest) returns (movies.v1.CreateMovieResponse);
+     */
+    createMovie(input: CreateMovieRequest, metadata: grpc.Metadata | grpc.CallOptions | ((err: grpc.ServiceError | null, value?: CreateMovieResponse) => void), options?: grpc.CallOptions | ((err: grpc.ServiceError | null, value?: CreateMovieResponse) => void), callback?: ((err: grpc.ServiceError | null, value?: CreateMovieResponse) => void)): grpc.ClientUnaryCall {
+        const method = MoviesService.methods[1];
+        return this.makeUnaryRequest<CreateMovieRequest, CreateMovieResponse>(`/${MoviesService.typeName}/${method.name}`, (value: CreateMovieRequest): Buffer => Buffer.from(method.I.toBinary(value, this._binaryOptions)), (value: Buffer): CreateMovieResponse => method.O.fromBinary(value, this._binaryOptions), input, (metadata as any), (options as any), (callback as any));
     }
 }
