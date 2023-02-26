@@ -16,3 +16,4 @@ jobs:
           # The 'main' branch of the GitHub repository that defines the module.
           against: "https://github.com/${GITHUB_REPOSITORY}.git#branch=main"
           buf_input_https_password: ${{ secrets.NPM_TOKEN }}
+  

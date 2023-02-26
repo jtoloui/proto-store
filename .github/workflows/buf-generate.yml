@@ -24,8 +24,8 @@ jobs:
         run: |
           if ! git diff --quiet; then
             echo "Changes detected, committing and pushing"
-            git config --global user.name "B2B-CI"
-            git config --global user.email "b2b-ci@users.noreply.github.com"
+            git config --global user.name "proto-CI"
+            git config --global user.email "proto-ci@users.noreply.github.com"
             git add .
             git commit -m "CI: Pushing generated proto buf"
             git push
