@@ -47,6 +47,7 @@ The response message containing the movie.
 | Field | Type | Label | Description |
 | ----- | ---- | ----- | ----------- |
 | movie | [Movie](#movies-v1-Movie) |  | The created movie. |
+| id | [string](#string) |  |  |
 
 
 

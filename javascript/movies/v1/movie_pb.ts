@@ -81,6 +81,10 @@ export interface CreateMovieResponse {
      * @generated from protobuf field: movies.v1.Movie movie = 1;
      */
     movie?: Movie;
+    /**
+     * @generated from protobuf field: string id = 2;
+     */
+    id: string;
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class Movie$Type extends MessageType<Movie> {
@@ -136,7 +140,8 @@ export const CreateMovieRequest = new CreateMovieRequest$Type();
 class CreateMovieResponse$Type extends MessageType<CreateMovieResponse> {
     constructor() {
         super("movies.v1.CreateMovieResponse", [
-            { no: 1, name: "movie", kind: "message", T: () => Movie }
+            { no: 1, name: "movie", kind: "message", T: () => Movie },
+            { no: 2, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
 }
