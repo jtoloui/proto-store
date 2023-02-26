@@ -1,0 +1,30 @@
+name: Releases
+
+on: 
+  push:
+    tags:
+    - '*'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build JS build
+      run: |
+        cd javascript/
+        npm ci && npm run build
+    - name: Push to GitHub Package Registry
+      uses: actions/upload-artifact@v3
+      with:
+        name: gRPC-js-${{ github.ref_name }}
+        path: javascript/dist
+    - name: Create Release
+      uses: ncipollo/release-action@v1
+      with:
+        generateReleaseNotes: true
+        artifacts: javascript/dist
