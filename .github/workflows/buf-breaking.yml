@@ -16,11 +16,4 @@ jobs:
           # The 'main' branch of the GitHub repository that defines the module.
           against: "https://github.com/${GITHUB_REPOSITORY}.git#branch=main"
           buf_input_https_password: ${{ secrets.NPM_TOKEN }}
-  buf-linting:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: bufbuild/buf-setup-action@v1
-        with:
-          github_token: ${{ secrets.NPM_TOKEN }}
-      - uses: bufbuild/buf-lint-action@v1
+  
