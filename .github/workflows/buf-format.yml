@@ -29,3 +29,4 @@ jobs:
       with:
         issue-number: ${{ github.event.pull_request.number }}
         body: "buf has generated changes, please run `buf format -w` before pushing again"
+        token: ${{ secrets.NPM_TOKEN }}
