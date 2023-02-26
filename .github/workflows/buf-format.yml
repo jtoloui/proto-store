@@ -30,3 +30,4 @@ jobs:
         issue-number: ${{ github.event.pull_request.number }}
         comment-author: 'github-actions[bot]'
         body: ":warning: buf has generated changes, please run `buf format -w` before pushing again :warning:"
+        token: ${{ secrets.GITHUB_TOKEN }}
