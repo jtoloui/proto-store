@@ -82,6 +82,8 @@ export interface CreateMovieResponse {
      */
     movie?: Movie;
     /**
+     * The id of the created movie.
+     *
      * @generated from protobuf field: string id = 2;
      */
     id: string;
