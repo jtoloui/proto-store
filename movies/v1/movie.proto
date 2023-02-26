@@ -13,18 +13,33 @@ message Movie {
 }
 
 // The request message containing the movie title.
-message GetMovieByTitleRequest {
+message GetMovieByIdRequest {
 	// The title of the movie to retrieve.
-  string title = 1;
+  string id = 1;
 }
 
 // The response message containing the movie.
-message GetMovieByTitleResponse {
+message GetMovieByIdResponse {
   // The movie with the given title.
   Movie movie = 1;
 }
+
+// The request message containing the movie.
+message CreateMovieRequest {
+  // The movie to create.
+  Movie movie = 1;
+}
+
+// The response message containing the movie.
+message CreateMovieResponse {
+  // The created movie.
+  Movie movie = 1;
+}
+
 // The movies service definition.
 service MoviesService {
   // Retrieves the movie with the given title.
-  rpc GetMovieByTitle(GetMovieByTitleRequest) returns (GetMovieByTitleResponse) {}
+  rpc GetMovieById(GetMovieByIdRequest) returns (GetMovieByIdResponse) {}
+  // Creates a movie.
+  rpc CreateMovie(CreateMovieRequest) returns (CreateMovieResponse) {}
 }
