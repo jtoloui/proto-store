@@ -28,3 +28,18 @@ jobs:
       with:
         generateReleaseNotes: true
         artifacts: javascript/dist
+  publish-js-gprc:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://npm.pkg.github.com/
+      - run: cd javascript && npm ci && npm run build && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
