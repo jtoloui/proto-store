@@ -1,67 +1,23 @@
 version: v1
 managed:
   enabled: true
-  optimize_for: CODE_SIZE
+  go_package_prefix: 
+    default: github.com/jtoloui/proto-store/go
 
 plugins:
-  # - plugin: buf.build/bufbuild/connect-web:v0.7.0
-  #   out: target=js+dts
-  # - plugin: buf.build/bufbuild/es
-  #   opt: target=js
-  #   out: javascript
-
-  # - plugin: buf.build/bufbuild/connect-es
-  #   out: js
-  #   opt:
-  #     - target=js+dts
-  # - plugin: buf.build/grpc/node
-  #   out: javascript
-  #   opt: grpc_js,binary,import_style=commonjs
-
   - plugin: buf.build/community/timostamm-protobuf-ts
     out: javascript
     opt: long_type_string,add_pb_suffix,ts_nocheck,eslint_disable,server_grpc1,client_grpc1
-  # - plugin: buf.build/community/timostamm-protobuf-ts
-  #   out: javascript
 
-  # dependencies
-  # - plugin: buf.build/bufbuild/es
-  #   out: javascript
+  - plugin: buf.build/grpc/go
+    out: go
+    opt:
+      - paths=source_relative
 
-
-  # - plugin: buf.build/protocolbuffers/js
-  #   out: javascript/src
-  #   opt: import_style=commonjs,binary
-
-  # - plugin: buf.build/grpc/node
-  #   out: javascript
-  #   opt: grpc_js,binary,import_style=commonjs
-  # - plugin: buf.build/community/stephenh-ts-proto
-  #   out: javascript
-
-  # - name: js
-  #   out: ../src/proto
-  #   opt: import_style=commonjs,binary
-
-# working
-  # - name: grpc
-  #   out: javascript/src
-  #   opt: grpc_js
-  #   path: ./javascript/node_modules/.bin/grpc_tools_node_protoc_plugin
-  # - name: ts
-  #   out: javascript/src
-  #   opt: grpc_js
-  #   path: ./javascript/node_modules/.bin/protoc-gen-ts
-  # - plugin: buf.build/protocolbuffers/js
-  #   out: javascript/src
-  #   opt: import_style=commonjs,binary
-
-  # - plugin: buf.build/community/timostamm-protobuf-ts
-  #   out: javascript
-  # - name: ts
-  #   out: javascript
-  #   opt: ts_out=ts
-  #   path: ./javascript/node_modules/.bin/protoc-gen-ts
+  - plugin: buf.build/protocolbuffers/go
+    out: go
+    opt:
+      - paths=source_relative
 
   - plugin: buf.build/community/pseudomuto-doc
     out: docs
