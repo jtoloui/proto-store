@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package movies.v1;
 
+option go_package = "github.com/jtoloui/proto-store/go/movies/v1;moviesv1";
+
 // The movie message containing the title, director, and year.
 message Movie {
   // The title of the movie.
@@ -14,7 +16,7 @@ message Movie {
 
 // The request message containing the movie title.
 message GetMovieByIdRequest {
-	// The title of the movie to retrieve.
+  // The title of the movie to retrieve.
   string id = 1;
 }
 
@@ -34,8 +36,8 @@ message CreateMovieRequest {
 message CreateMovieResponse {
   // The created movie.
   Movie movie = 1;
-  int32 id = 2;
-
+  // The id of the created movie.
+  string id = 2;
 }
 
 // The movies service definition.

@@ -4,6 +4,15 @@
 // tslint:disable
 // @ts-nocheck
 import { ServiceType } from "@protobuf-ts/runtime-rpc";
+import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
+import type { IBinaryWriter } from "@protobuf-ts/runtime";
+import { WireType } from "@protobuf-ts/runtime";
+import type { BinaryReadOptions } from "@protobuf-ts/runtime";
+import type { IBinaryReader } from "@protobuf-ts/runtime";
+import { UnknownFieldHandler } from "@protobuf-ts/runtime";
+import type { PartialMessage } from "@protobuf-ts/runtime";
+import { reflectionMergePartial } from "@protobuf-ts/runtime";
+import { MESSAGE_TYPE } from "@protobuf-ts/runtime";
 import { MessageType } from "@protobuf-ts/runtime";
 /**
  * The movie message containing the title, director, and year.
@@ -82,6 +91,8 @@ export interface CreateMovieResponse {
      */
     movie?: Movie;
     /**
+     * The id of the created movie.
+     *
      * @generated from protobuf field: string id = 2;
      */
     id: string;
@@ -95,6 +106,53 @@ class Movie$Type extends MessageType<Movie> {
             { no: 3, name: "year", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
+    create(value?: PartialMessage<Movie>): Movie {
+        const message = { title: "", director: "", year: 0 };
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<Movie>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: Movie): Movie {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string title */ 1:
+                    message.title = reader.string();
+                    break;
+                case /* string director */ 2:
+                    message.director = reader.string();
+                    break;
+                case /* int32 year */ 3:
+                    message.year = reader.int32();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: Movie, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string title = 1; */
+        if (message.title !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.title);
+        /* string director = 2; */
+        if (message.director !== "")
+            writer.tag(2, WireType.LengthDelimited).string(message.director);
+        /* int32 year = 3; */
+        if (message.year !== 0)
+            writer.tag(3, WireType.Varint).int32(message.year);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
 }
 /**
  * @generated MessageType for protobuf message movies.v1.Movie
@@ -106,6 +164,41 @@ class GetMovieByIdRequest$Type extends MessageType<GetMovieByIdRequest> {
         super("movies.v1.GetMovieByIdRequest", [
             { no: 1, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
+    }
+    create(value?: PartialMessage<GetMovieByIdRequest>): GetMovieByIdRequest {
+        const message = { id: "" };
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<GetMovieByIdRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GetMovieByIdRequest): GetMovieByIdRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* string id */ 1:
+                    message.id = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GetMovieByIdRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* string id = 1; */
+        if (message.id !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.id);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
     }
 }
 /**
@@ -119,6 +212,41 @@ class GetMovieByIdResponse$Type extends MessageType<GetMovieByIdResponse> {
             { no: 1, name: "movie", kind: "message", T: () => Movie }
         ]);
     }
+    create(value?: PartialMessage<GetMovieByIdResponse>): GetMovieByIdResponse {
+        const message = {};
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<GetMovieByIdResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: GetMovieByIdResponse): GetMovieByIdResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* movies.v1.Movie movie */ 1:
+                    message.movie = Movie.internalBinaryRead(reader, reader.uint32(), options, message.movie);
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: GetMovieByIdResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* movies.v1.Movie movie = 1; */
+        if (message.movie)
+            Movie.internalBinaryWrite(message.movie, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
+    }
 }
 /**
  * @generated MessageType for protobuf message movies.v1.GetMovieByIdResponse
@@ -130,6 +258,41 @@ class CreateMovieRequest$Type extends MessageType<CreateMovieRequest> {
         super("movies.v1.CreateMovieRequest", [
             { no: 1, name: "movie", kind: "message", T: () => Movie }
         ]);
+    }
+    create(value?: PartialMessage<CreateMovieRequest>): CreateMovieRequest {
+        const message = {};
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<CreateMovieRequest>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: CreateMovieRequest): CreateMovieRequest {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* movies.v1.Movie movie */ 1:
+                    message.movie = Movie.internalBinaryRead(reader, reader.uint32(), options, message.movie);
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: CreateMovieRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* movies.v1.Movie movie = 1; */
+        if (message.movie)
+            Movie.internalBinaryWrite(message.movie, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
     }
 }
 /**
@@ -143,6 +306,47 @@ class CreateMovieResponse$Type extends MessageType<CreateMovieResponse> {
             { no: 1, name: "movie", kind: "message", T: () => Movie },
             { no: 2, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
+    }
+    create(value?: PartialMessage<CreateMovieResponse>): CreateMovieResponse {
+        const message = { id: "" };
+        globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
+        if (value !== undefined)
+            reflectionMergePartial<CreateMovieResponse>(this, message, value);
+        return message;
+    }
+    internalBinaryRead(reader: IBinaryReader, length: number, options: BinaryReadOptions, target?: CreateMovieResponse): CreateMovieResponse {
+        let message = target ?? this.create(), end = reader.pos + length;
+        while (reader.pos < end) {
+            let [fieldNo, wireType] = reader.tag();
+            switch (fieldNo) {
+                case /* movies.v1.Movie movie */ 1:
+                    message.movie = Movie.internalBinaryRead(reader, reader.uint32(), options, message.movie);
+                    break;
+                case /* string id */ 2:
+                    message.id = reader.string();
+                    break;
+                default:
+                    let u = options.readUnknownField;
+                    if (u === "throw")
+                        throw new globalThis.Error(`Unknown field ${fieldNo} (wire type ${wireType}) for ${this.typeName}`);
+                    let d = reader.skip(wireType);
+                    if (u !== false)
+                        (u === true ? UnknownFieldHandler.onRead : u)(this.typeName, message, fieldNo, wireType, d);
+            }
+        }
+        return message;
+    }
+    internalBinaryWrite(message: CreateMovieResponse, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
+        /* movies.v1.Movie movie = 1; */
+        if (message.movie)
+            Movie.internalBinaryWrite(message.movie, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* string id = 2; */
+        if (message.id !== "")
+            writer.tag(2, WireType.LengthDelimited).string(message.id);
+        let u = options.writeUnknownFields;
+        if (u !== false)
+            (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
+        return writer;
     }
 }
 /**
