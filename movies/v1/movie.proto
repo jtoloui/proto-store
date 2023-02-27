@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package movies.v1;
 
+option go_package = "github.com/jtoloui/proto-store/go/movies/v1;moviesv1";
+
 // The movie message containing the title, director, and year.
 message Movie {
   // The title of the movie.
