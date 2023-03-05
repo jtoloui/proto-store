@@ -129,6 +129,7 @@ The movie message containing the title, director, and year.
 | title | [string](#string) |  | The title of the movie. |
 | director | [string](#string) |  | The director of the movie. |
 | year | [int32](#int32) |  | The year the movie was released. |
+| id | [string](#string) |  | The id of the movie. |
 
 
 

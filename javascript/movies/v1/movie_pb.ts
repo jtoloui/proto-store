@@ -38,6 +38,12 @@ export interface Movie {
      * @generated from protobuf field: int32 year = 3;
      */
     year: number;
+    /**
+     * The id of the movie.
+     *
+     * @generated from protobuf field: string id = 4;
+     */
+    id: string;
 }
 /**
  * The request message containing the movie title.
@@ -141,11 +147,12 @@ class Movie$Type extends MessageType<Movie> {
         super("movies.v1.Movie", [
             { no: 1, name: "title", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
             { no: 2, name: "director", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
-            { no: 3, name: "year", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 3, name: "year", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 4, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<Movie>): Movie {
-        const message = { title: "", director: "", year: 0 };
+        const message = { title: "", director: "", year: 0, id: "" };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<Movie>(this, message, value);
@@ -164,6 +171,9 @@ class Movie$Type extends MessageType<Movie> {
                     break;
                 case /* int32 year */ 3:
                     message.year = reader.int32();
+                    break;
+                case /* string id */ 4:
+                    message.id = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -186,6 +196,9 @@ class Movie$Type extends MessageType<Movie> {
         /* int32 year = 3; */
         if (message.year !== 0)
             writer.tag(3, WireType.Varint).int32(message.year);
+        /* string id = 4; */
+        if (message.id !== "")
+            writer.tag(4, WireType.LengthDelimited).string(message.id);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
