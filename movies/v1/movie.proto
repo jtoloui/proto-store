@@ -12,6 +12,8 @@ message Movie {
   string director = 2;
   // The year the movie was released.
   int32 year = 3;
+  // The id of the movie.
+  string id = 4;
 }
 
 // The request message containing the movie title.
