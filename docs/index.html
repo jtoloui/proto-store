@@ -195,6 +195,14 @@
                 </li>
               
                 <li>
+                  <a href="#movies.v1.GetMoviesRequest"><span class="badge">M</span>GetMoviesRequest</a>
+                </li>
+              
+                <li>
+                  <a href="#movies.v1.GetMoviesResponse"><span class="badge">M</span>GetMoviesResponse</a>
+                </li>
+              
+                <li>
                   <a href="#movies.v1.Movie"><span class="badge">M</span>Movie</a>
                 </li>
               
@@ -323,6 +331,68 @@
 
         
       
+        <h3 id="movies.v1.GetMoviesRequest">GetMoviesRequest</h3>
+        <p>The request message containing the page number and number of movies per page.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>page</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The page number to retrieve. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>per_page</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The number of movies to retrieve per page. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
+        <h3 id="movies.v1.GetMoviesResponse">GetMoviesResponse</h3>
+        <p>The response message containing the movies.</p>
+
+        
+          <table class="field-table">
+            <thead>
+              <tr><td>Field</td><td>Type</td><td>Label</td><td>Description</td></tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>movies</td>
+                  <td><a href="#movies.v1.Movie">Movie</a></td>
+                  <td>repeated</td>
+                  <td><p>The movies. </p></td>
+                </tr>
+              
+                <tr>
+                  <td>total</td>
+                  <td><a href="#int32">int32</a></td>
+                  <td></td>
+                  <td><p>The total number of movies. </p></td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          
+
+        
+      
         <h3 id="movies.v1.Movie">Movie</h3>
         <p>The movie message containing the title, director, and year.</p>
 
@@ -374,6 +444,13 @@
             <tr><td>Method Name</td><td>Request Type</td><td>Response Type</td><td>Description</td></tr>
           </thead>
           <tbody>
+            
+              <tr>
+                <td>GetMovies</td>
+                <td><a href="#movies.v1.GetMoviesRequest">GetMoviesRequest</a></td>
+                <td><a href="#movies.v1.GetMoviesResponse">GetMoviesResponse</a></td>
+                <td><p>Retrieves a list of movies.</p></td>
+              </tr>
             
               <tr>
                 <td>GetMovieById</td>

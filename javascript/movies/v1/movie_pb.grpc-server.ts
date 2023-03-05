@@ -7,6 +7,8 @@ import { CreateMovieResponse } from "./movie_pb";
 import { CreateMovieRequest } from "./movie_pb";
 import { GetMovieByIdResponse } from "./movie_pb";
 import { GetMovieByIdRequest } from "./movie_pb";
+import { GetMoviesResponse } from "./movie_pb";
+import { GetMoviesRequest } from "./movie_pb";
 import type * as grpc from "@grpc/grpc-js";
 /**
  * The movies service definition.
@@ -14,6 +16,12 @@ import type * as grpc from "@grpc/grpc-js";
  * @generated from protobuf service movies.v1.MoviesService
  */
 export interface IMoviesService extends grpc.UntypedServiceImplementation {
+    /**
+     * Retrieves a list of movies.
+     *
+     * @generated from protobuf rpc: GetMovies(movies.v1.GetMoviesRequest) returns (movies.v1.GetMoviesResponse);
+     */
+    getMovies: grpc.handleUnaryCall<GetMoviesRequest, GetMoviesResponse>;
     /**
      * Retrieves the movie with the given title.
      *
@@ -39,6 +47,16 @@ export interface IMoviesService extends grpc.UntypedServiceImplementation {
  * ```
  */
 export const moviesServiceDefinition: grpc.ServiceDefinition<IMoviesService> = {
+    getMovies: {
+        path: "/movies.v1.MoviesService/GetMovies",
+        originalName: "GetMovies",
+        requestStream: false,
+        responseStream: false,
+        responseDeserialize: bytes => GetMoviesResponse.fromBinary(bytes),
+        requestDeserialize: bytes => GetMoviesRequest.fromBinary(bytes),
+        responseSerialize: value => Buffer.from(GetMoviesResponse.toBinary(value)),
+        requestSerialize: value => Buffer.from(GetMoviesRequest.toBinary(value))
+    },
     getMovieById: {
         path: "/movies.v1.MoviesService/GetMovieById",
         originalName: "GetMovieById",

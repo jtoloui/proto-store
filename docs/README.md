@@ -8,6 +8,8 @@
     - [CreateMovieResponse](#movies-v1-CreateMovieResponse)
     - [GetMovieByIdRequest](#movies-v1-GetMovieByIdRequest)
     - [GetMovieByIdResponse](#movies-v1-GetMovieByIdResponse)
+    - [GetMoviesRequest](#movies-v1-GetMoviesRequest)
+    - [GetMoviesResponse](#movies-v1-GetMoviesResponse)
     - [Movie](#movies-v1-Movie)
   
     - [MoviesService](#movies-v1-MoviesService)
@@ -84,6 +86,38 @@ The response message containing the movie.
 
 
 
+<a name="movies-v1-GetMoviesRequest"></a>
+
+### GetMoviesRequest
+The request message containing the page number and number of movies per page.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| page | [int32](#int32) |  | The page number to retrieve. |
+| per_page | [int32](#int32) |  | The number of movies to retrieve per page. |
+
+
+
+
+
+
+<a name="movies-v1-GetMoviesResponse"></a>
+
+### GetMoviesResponse
+The response message containing the movies.
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| movies | [Movie](#movies-v1-Movie) | repeated | The movies. |
+| total | [int32](#int32) |  | The total number of movies. |
+
+
+
+
+
+
 <a name="movies-v1-Movie"></a>
 
 ### Movie
@@ -114,6 +148,7 @@ The movies service definition.
 
 | Method Name | Request Type | Response Type | Description |
 | ----------- | ------------ | ------------- | ------------|
+| GetMovies | [GetMoviesRequest](#movies-v1-GetMoviesRequest) | [GetMoviesResponse](#movies-v1-GetMoviesResponse) | Retrieves a list of movies. |
 | GetMovieById | [GetMovieByIdRequest](#movies-v1-GetMovieByIdRequest) | [GetMovieByIdResponse](#movies-v1-GetMovieByIdResponse) | Retrieves the movie with the given title. |
 | CreateMovie | [CreateMovieRequest](#movies-v1-CreateMovieRequest) | [CreateMovieResponse](#movies-v1-CreateMovieResponse) | Creates a movie. |
 
