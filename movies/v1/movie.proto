@@ -40,8 +40,26 @@ message CreateMovieResponse {
   string id = 2;
 }
 
+// The request message containing the page number and number of movies per page.
+message GetMoviesRequest {
+  // The page number to retrieve.
+  int32 page = 1;
+  // The number of movies to retrieve per page.
+  int32 per_page = 2;
+}
+
+// The response message containing the movies.
+message GetMoviesResponse {
+  // The movies.
+  repeated Movie movies = 1;
+  // The total number of movies.
+  int32 total = 2;
+}
+
 // The movies service definition.
 service MoviesService {
+  // Retrieves a list of movies.
+  rpc GetMovies(GetMoviesRequest) returns (GetMoviesResponse) {}
   // Retrieves the movie with the given title.
   rpc GetMovieById(GetMovieByIdRequest) returns (GetMovieByIdResponse) {}
   // Creates a movie.
