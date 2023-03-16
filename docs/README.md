@@ -50,6 +50,7 @@ The response message containing the movie.
 | ----- | ---- | ----- | ----------- |
 | movie | [Movie](#movies-v1-Movie) |  | The created movie. |
 | id | [string](#string) |  | The id of the created movie. |
+| hello | [string](#string) |  | example string |
 
 
 

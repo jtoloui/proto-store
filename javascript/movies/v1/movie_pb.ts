@@ -102,6 +102,12 @@ export interface CreateMovieResponse {
      * @generated from protobuf field: string id = 2;
      */
     id: string;
+    /**
+     * example string
+     *
+     * @generated from protobuf field: string hello = 3;
+     */
+    hello: string;
 }
 /**
  * The request message containing the page number and number of movies per page.
@@ -355,11 +361,12 @@ class CreateMovieResponse$Type extends MessageType<CreateMovieResponse> {
     constructor() {
         super("movies.v1.CreateMovieResponse", [
             { no: 1, name: "movie", kind: "message", T: () => Movie },
-            { no: 2, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
+            { no: 2, name: "id", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 3, name: "hello", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<CreateMovieResponse>): CreateMovieResponse {
-        const message = { id: "" };
+        const message = { id: "", hello: "" };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<CreateMovieResponse>(this, message, value);
@@ -375,6 +382,9 @@ class CreateMovieResponse$Type extends MessageType<CreateMovieResponse> {
                     break;
                 case /* string id */ 2:
                     message.id = reader.string();
+                    break;
+                case /* string hello */ 3:
+                    message.hello = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -394,6 +404,9 @@ class CreateMovieResponse$Type extends MessageType<CreateMovieResponse> {
         /* string id = 2; */
         if (message.id !== "")
             writer.tag(2, WireType.LengthDelimited).string(message.id);
+        /* string hello = 3; */
+        if (message.hello !== "")
+            writer.tag(3, WireType.LengthDelimited).string(message.hello);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
