@@ -42,7 +42,7 @@ message CreateMovieResponse {
   string id = 2;
 }
 
-// The request message containing the page number and number of movies per page.
+
 message GetMoviesRequest {
   // The page number to retrieve.
   int64 page = 1;
