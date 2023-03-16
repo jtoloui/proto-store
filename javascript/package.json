@@ -1,6 +1,6 @@
 {
   "name": "@jtoloui/proto-store",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "ProtoStore is proto buff store for nodejs",
   "repository": {
     "type": "git",
