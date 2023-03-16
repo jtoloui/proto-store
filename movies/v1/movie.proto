@@ -40,12 +40,15 @@ message CreateMovieResponse {
   Movie movie = 1;
   // The id of the created movie.
   string id = 2;
+
+  // example string
+  string hello = 3;
 }
 
-
+// The request message containing the page number and number of movies per page.
 message GetMoviesRequest {
   // The page number to retrieve.
-  int64 page = 1;
+  int32 page = 1;
   // The number of movies to retrieve per page.
   int32 per_page = 2;
 }
