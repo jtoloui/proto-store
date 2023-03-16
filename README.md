@@ -16,7 +16,7 @@ npm install @jtoloui/proto-store
 ```typescript
 // client setup
 import { ChannelCredentials } from "@grpc/grpc-js";
-import { MoviesServiceClient } from "@jtoloui/proto-store";
+import { MoviesServiceClient, CreateMovieRequest } from "@jtoloui/proto-store";
 
 
 export const client = new MoviesServiceClient(
@@ -27,6 +27,14 @@ export const client = new MoviesServiceClient(
 );
 
 // client in use
+
+const movieRequest = CreateMovieRequest.create({
+	movie: {
+		title,
+		year,
+		director,
+	},
+});
 
 client.createMovie(movieRequest, (err, response) => {
 	if (err) {
