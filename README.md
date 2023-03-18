@@ -1,6 +1,7 @@
 # proto-store
 
-[![Releases](https://github.com/jtoloui/proto-store/actions/workflows/release.yml/badge.svg)](https://github.com/jtoloui/proto-store/actions/workflows/release.yml)
+[![Releases](https://github.com/jtoloui/proto-store/actions/workflows/release.yml/badge.svg)](https://github.com/jtoloui/proto-store/actions/workflows/release.yml) ![Go](https://img.shields.io/github/go-mod/go-version/jtoloui/proto-store?filename=go%2Fgo.mod&style=flat-square) ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/jtoloui/proto-store?style=flat-square)
+
 
 ## What is proto-store
 
